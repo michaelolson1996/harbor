@@ -1,0 +1,16 @@
+---
+
+- name: Add Harbor Repository
+  kubernetes.core.helm_repository:
+    name: "{{ helm_harbor_repo_name }}"
+    repo_url: "{{ helm_harbor_repo_url }}"
+
+- name: Install Harbor Helm Chart
+  kubernetes.core.helm:
+    name: "{{ helm_harbor_chart_name }}"
+    values: "{{ lookup('template', 'values.yml') | from_yaml }}"
+    chart_version: "{{ helm_harbor_chart_version }}"
+    chart_ref: "{{ helm_harbor_repo_name }}/{{ helm_harbor_chart_name }}"
+    release_namespace: "{{ helm_harbor_target_namespace }}"
+    create_namespace: true
+    kubeconfig: "{{ helm_harbor_kubeconfig }}"

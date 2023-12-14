@@ -1,0 +1,103 @@
+---
+
+##########################################
+#   Helm Harbor Repository               #
+##########################################
+
+helm_harbor_repo_name: "harbor"
+helm_harbor_repo_url: "https://helm.goharbor.io"
+
+helm_harbor_chart_name: "harbor"
+helm_harbor_chart_version: "1.12.4"
+
+##########################################
+#   Helm Harbor Cluster Configuration    #
+##########################################
+
+helm_harbor_target_namespace: "harbor"
+helm_harbor_kubeconfig: "{{ site_kubeconfig }}"
+
+##########################################
+#   Helm Harbor Internal TLS             #
+##########################################
+
+helm_harbor_internal_tls_enabled: true
+helm_harbor_internal_tls_certsource: "auto"
+helm_harbor_internal_tls_auto_name: "harbor"
+helm_harbor_internal_tls_secret_name: ""
+helm_harbor_internal_tls_notary_secret_name: ""
+
+##########################################
+#   Helm Harbor Networking               #
+##########################################
+
+helm_harbor_expose_type: "nodePort"
+
+helm_harbor_ingress_cert_source: "none"
+helm_harbor_ingress_host_core: "core.{{ site_domain }}"
+helm_harbor_ingress_host_notary: "notary.{{ site_domain }}"
+helm_harbor_ingress_controller: "default"
+helm_harbor_ingress_annotations: {}
+helm_harbor_ingress_harbor_annotations: {}
+helm_harbor_ingress_harbor_labels: {}
+helm_harbor_ingress_notary_annotations: {}
+helm_harbor_ingress_notary_labels: {}
+
+helm_harbor_service_name: ""
+helm_harbor_service_annotations: {}
+helm_harbor_service_ports: {}
+helm_harbor_service_ip: ""
+helm_harbor_service_source_ranges: []
+
+helm_harbor_proxy_url: ""
+
+
+##########################################
+#   Helm Harbor Persistence              #
+##########################################
+
+helm_harbor_persistence_enabled: true
+
+helm_harbor_resource_policy: "keep"
+
+helm_harbor_pvc_registry:
+  existing_claim: ""
+  storage_class: ""
+  sub_path: ""
+  access_mode: "ReadWriteOnce"
+  size: "5Gi"
+  annotations: {}
+
+helm_harbor_pvc_jobservice_log:
+  existing_claim: ""
+  storage_class: ""
+  sub_path: ""
+  access_mode: "ReadWriteOnce"
+  size: "1Gi"
+  annotations: {}
+
+helm_harbor_pvc_database:
+  existing_claim: ""
+  storage_class: ""
+  sub_path: ""
+  access_mode: "ReadWriteOnce"
+  size: "1Gi"
+  annotations: {}
+
+helm_harbor_pvc_redis:
+  existing_claim: ""
+  storage_class: ""
+  sub_path: ""
+  access_mode: "ReadWriteOnce"
+  size: "1Gi"
+  annotations: {}
+
+helm_harbor_pvc_trivy:
+  existing_claim: ""
+  storage_class: ""
+  sub_path: ""
+  access_mode: "ReadWriteOnce"
+  size: "5Gi"
+  annotations: {}
+
+
